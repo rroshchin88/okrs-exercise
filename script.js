@@ -51,3 +51,29 @@ function showKeyResultsHelp() {
     var helpDiv = document.getElementById('keyResultsHelp');
     helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
 }
+
+// Check if all validations passed and show modal if they did
+if (objectiveFeedback === 'Objective looks good!' && keyResultsFeedback === 'Key Results look well-defined!') {
+    showModal();
+} else {
+    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
+    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+}
+
+function showModal() {
+var modal = document.getElementById('successModal');
+modal.style.display = 'block';
+}
+
+function closeModal() {
+var modal = document.getElementById('successModal');
+modal.style.display = 'none';
+}
+
+// Close the modal when the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+var modal = document.getElementById('successModal');
+if (event.target == modal) {
+    modal.style.display = 'none';
+}
+}
