@@ -17,12 +17,28 @@ function evaluateOKRs() {
         }
     }
 
-// Placeholder for Key Results validation logic
-// Assume similar validation and feedback logic for Key Results here
-    keyResultsFeedback = 'Key Results validation logic goes here.';
+    // Validate Key Results
+var validKRCount = 0;
+keyResults.forEach(function(kr, index) {
+    if (kr.trim() === '') {
+        return;
+    }
+    validKRCount++;
+    if (!/\d/.test(kr)) {
+        keyResultsFeedback += `KR #${index + 1} should include a number quantifying its value. `;
+    }
+});
 
-    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
-    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+if (validKRCount < 4 || validKRCount > 6) {
+    keyResultsFeedback += 'You should have 4 to 6 Key Results per Objective. ';
+}
+
+if (keyResultsFeedback === '') {
+    keyResultsFeedback = 'Key Results look well-defined!';
+}
+
+document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
+document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
 }
 
 function showObjectiveHelp() {
