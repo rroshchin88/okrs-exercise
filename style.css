@@ -14,14 +14,7 @@ button {
     margin-top: 20px;
 }
 
-#objectiveHelp {
-    background-color: #f7f7f7;
-    border-left: 5px solid #0078d4;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-#keyResultsHelp {
+#objectiveHelp, #keyResultsHelp {
     background-color: #f7f7f7;
     border-left: 5px solid #0078d4;
     padding: 10px;
