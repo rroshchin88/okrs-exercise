@@ -3,9 +3,8 @@ function evaluateOKRs() {
     var keyResults = document.getElementById('keyResultsInput').value.trim();
     var objectiveFeedback = '';
     var keyResultsFeedback = '';
-    var allValid = true; // Assume all validations pass initially
 
-// Validate Objective
+    // Validate Objective
     if (objective.length < 10) {
         objectiveFeedback = 'Objective should be more descriptive.';
     } else if (/\d/.test(objective)) {
@@ -18,7 +17,7 @@ function evaluateOKRs() {
         }
     }
 
-// Validate Key Results
+    // Validate Key Results
     var keyResultsArray = keyResults.split('\n');
     var validKRCount = 0;
     keyResultsArray.forEach(function(kr, index) {
@@ -52,24 +51,3 @@ function showKeyResultsHelp() {
     var helpDiv = document.getElementById('keyResultsHelp');
     helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
 }
-
-// Check if all validations passed
-    if (objectiveFeedback === 'Objective looks good!' && keyResultsFeedback === 'Key Results look well-defined!') {
-    allValid = true;
-    } else {
-        allValid = false;
-    }
-
-    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
-    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
-
-// If all validations pass, show celebratory message
-    if (allValid) {
-        showCelebration();
-    }
-
-function showCelebration() {
-    var celebrationMessage = document.createElement('div');
-    celebrationMessage.innerHTML = '<h2>Congratulations! Your OKRs look great!</h2>';
-    celebrationMessage.style.textAlign = 'center';
-    document.body.appendChild(celebrationMessage);
