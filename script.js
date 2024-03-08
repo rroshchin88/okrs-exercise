@@ -1,24 +1,30 @@
 function evaluateOKRs() {
-    var objective = document.getElementById('objectiveInput').value;
-    var keyResults = document.getElementById('keyResultsInput').value;
+    var objective = document.getElementById('objectiveInput').value.trim();
+    var keyResults = document.getElementById('keyResultsInput').value.trim();
     var objectiveFeedback = '';
     var keyResultsFeedback = '';
 
     // Validate Objective
-    if (objective.length < 10 || /\d/.test(objective)) {
-        objectiveFeedback = 'Objective should be descriptive and not include numbers.';
+    if (objective.length < 10) {
+        objectiveFeedback = 'Objective should be more descriptive. ';
+    } else if (/\d/.test(objective)) {
+        objectiveFeedback = 'Objective should not include any numbers. ';
     } else {
-        objectiveFeedback = 'Objective looks good!';
+        if (!objective.toLowerCase().includes('achieve') && !objective.toLowerCase().includes('inspire')) {
+            objectiveFeedback = 'Is your objective inspirational and actionable? Make sure it motivates and provides clear direction. ';
+        } else {
+            objectiveFeedback = 'Objective looks good!';
+        }
     }
 
-    // Validate Key Results
-    var krArray = keyResults.split('\n').filter(kr => kr.trim() !== '');
-    if (krArray.length < 4 || krArray.length > 6) {
-        keyResultsFeedback = 'You should have 4 to 6 Key Results.';
-    } else {
-        keyResultsFeedback = 'Key Results look well-defined!';
-    }
+    // Placeholder for Key Results validation logic
+    // keyResultsFeedback = 'Key Results validation logic goes here.';
 
     document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
     document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+}
+
+function showObjectiveHelp() {
+    var helpDiv = document.getElementById('objectiveHelp');
+    helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
 }
