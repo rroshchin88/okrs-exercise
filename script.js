@@ -3,35 +3,40 @@ function evaluateOKRs() {
     var keyResults = document.getElementById('keyResultsInput').value.trim();
     var objectiveFeedback = '';
     var keyResultsFeedback = '';
+    var allValid = true;
 
     // Validate Objective
     if (objective.length < 10) {
         objectiveFeedback = 'Objective should be more descriptive.';
+        allValid = false;
     } else if (/\d/.test(objective)) {
         objectiveFeedback = 'Objective should not include any numbers.';
+        allValid = false;
     } else {
         if (!objective.toLowerCase().includes('achieve') && !objective.toLowerCase().includes('inspire')) {
             objectiveFeedback = 'Is your objective inspirational and actionable? Make sure it motivates and provides clear direction.';
+            allValid = false;
         } else {
             objectiveFeedback = 'Objective looks good!';
         }
     }
 
     // Validate Key Results
-    var keyResultsArray = keyResults.split('\n');
     var validKRCount = 0;
-    keyResultsArray.forEach(function(kr, index) {
+    keyResults.split('\n').forEach(function(kr, index) {
         if (kr.trim() === '') {
             return;
         }
         validKRCount++;
         if (!/\d/.test(kr)) {
             keyResultsFeedback += `KR #${index + 1} should include a number quantifying its value. `;
+            allValid = false;
         }
     });
 
     if (validKRCount < 4 || validKRCount > 6) {
         keyResultsFeedback += 'You should have 4 to 6 Key Results per Objective. ';
+        allValid = false;
     }
 
     if (keyResultsFeedback === '') {
@@ -40,6 +45,12 @@ function evaluateOKRs() {
 
     document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
     document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+
+    if (allValid) {
+        showModal();
+    } else {
+        closeModal();
+    }
 }
 
 function showObjectiveHelp() {
@@ -52,10 +63,19 @@ function showKeyResultsHelp() {
     helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
 }
 
-// Check if all validations passed and show modal if they did
-if (objectiveFeedback === 'Objective looks good!' && keyResultsFeedback === 'Key Results look well-defined!') {
-    showModal();
-} else {
-    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
-    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+function showModal() {
+    var modal = document.getElementById('successModal');
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    var modal = document.getElementById('successModal');
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById('successModal');
+    if (event.target == modal) {
+        closeModal();
+    }
 }
