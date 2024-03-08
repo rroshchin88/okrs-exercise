@@ -72,3 +72,22 @@ button:hover {
     margin-top: 20px;
     display: none; /* Hide by default, show on button click */
 }
+
+/* Help button styles */
+.help-button {
+    display: block; /* Make the button block level to appear on its own line */
+    margin: 5px 0 20px 0; /* Add some margin for spacing */
+    padding: 5px 10px; /* Add padding for better touch area */
+    font-size: 14px; /* Smaller font size for subtlety */
+    color: #0078d4; /* Subtle blue color */
+    background: none; /* No background for a subtle look */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor pointer to indicate it's clickable */
+    text-decoration: underline; /* Underline to indicate it's a link/button */
+}
+
+.help-button:hover {
+    background-color: transparent; /* Maintain no background on hover */
+    color: #0056a3; /* Slightly darker blue on hover for feedback */
+    text-decoration: none; /* Remove underline on hover for a change/feedback */
+}
