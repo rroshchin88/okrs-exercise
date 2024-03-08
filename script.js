@@ -4,7 +4,7 @@ function evaluateOKRs() {
     var objectiveFeedback = '';
     var keyResultsFeedback = '';
 
-// Validate Objective
+    // Validate Objective
     if (objective.length < 10) {
         objectiveFeedback = 'Objective should be more descriptive.';
     } else if (/\d/.test(objective)) {
@@ -18,27 +18,28 @@ function evaluateOKRs() {
     }
 
     // Validate Key Results
-var validKRCount = 0;
-keyResults.forEach(function(kr, index) {
-    if (kr.trim() === '') {
-        return;
+    var keyResultsArray = keyResults.split('\n');
+    var validKRCount = 0;
+    keyResultsArray.forEach(function(kr, index) {
+        if (kr.trim() === '') {
+            return;
+        }
+        validKRCount++;
+        if (!/\d/.test(kr)) {
+            keyResultsFeedback += `KR #${index + 1} should include a number quantifying its value. `;
+        }
+    });
+
+    if (validKRCount < 4 || validKRCount > 6) {
+        keyResultsFeedback += 'You should have 4 to 6 Key Results per Objective. ';
     }
-    validKRCount++;
-    if (!/\d/.test(kr)) {
-        keyResultsFeedback += `KR #${index + 1} should include a number quantifying its value. `;
+
+    if (keyResultsFeedback === '') {
+        keyResultsFeedback = 'Key Results look well-defined!';
     }
-});
 
-if (validKRCount < 4 || validKRCount > 6) {
-    keyResultsFeedback += 'You should have 4 to 6 Key Results per Objective. ';
-}
-
-if (keyResultsFeedback === '') {
-    keyResultsFeedback = 'Key Results look well-defined!';
-}
-
-document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
-document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
+    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
+    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
 }
 
 function showObjectiveHelp() {
