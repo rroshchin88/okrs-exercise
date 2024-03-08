@@ -91,3 +91,15 @@ button:hover {
     color: #0056a3; /* Slightly darker blue on hover for feedback */
     text-decoration: none; /* Remove underline on hover for a change/feedback */
 }
+
+/* Celebratory message styles */
+h2 {
+    color: #4BB543; /* A success color */
+    animation: fadeIn 2s;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
