@@ -9,23 +9,21 @@
 <body>
     <h1>OKRs Exercise</h1>
     <div id="objectiveSection">
-        <h2>Objective</h2>
+        <h2>Objective <button onclick="showObjectiveHelp()" class="help-button">Need help?</button></h2>
         <textarea id="objectiveInput" placeholder="Enter your objective"></textarea>
         <p id="objectiveFeedback"></p>
-        <button onclick="showObjectiveHelp()">Need help?</button>
         <div id="objectiveHelp" style="display:none;">
             <p><strong>Tip:</strong> An effective objective should be inspirational, actionable, and free of any metrics. For example, "Inspire our team to achieve top customer satisfaction scores."</p>
         </div>
     </div>
     <div id="keyResultsSection">
-        <h2>Key Results</h2>
+        <h2>Key Results <button onclick="showKeyResultsHelp()" class="help-button">Need help?</button></h2>
         <textarea id="keyResultsInput" placeholder="Enter your key results"></textarea>
         <p id="keyResultsFeedback"></p>
-        <button onclick="showKeyResultsHelp()">Need help?</button>
         <div id="keyResultsHelp" style="display:none;">
             <p><strong>Tip:</strong> Effective key results should be measurable and time-bound. For example, "Increase customer satisfaction from 70% to 90% by the end of Q4."</p>
         </div>
-    </div>
+    </div>  
     <button onclick="evaluateOKRs()">Submit</button>
     <script src="script.js"></script>
 </body>
