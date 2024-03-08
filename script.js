@@ -63,7 +63,7 @@ function showKeyResultsHelp() {
     document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
     document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
 
-// If all validations pass, show celebratory message and confetti
+// If all validations pass, show celebratory message
     if (allValid) {
         showCelebration();
     }
@@ -73,11 +73,3 @@ function showCelebration() {
     celebrationMessage.innerHTML = '<h2>Congratulations! Your OKRs look great!</h2>';
     celebrationMessage.style.textAlign = 'center';
     document.body.appendChild(celebrationMessage);
-
-// Trigger confetti
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
-}
