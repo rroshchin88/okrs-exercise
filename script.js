@@ -28,3 +28,9 @@ function showObjectiveHelp() {
     var helpDiv = document.getElementById('objectiveHelp');
     helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
 }
+
+function showKeyResultsHelp() {
+    var helpDiv = document.getElementById('keyResultsHelp');
+    helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
+}
+

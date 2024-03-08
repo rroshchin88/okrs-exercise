@@ -21,7 +21,12 @@
         <h2>Key Results</h2>
         <textarea id="keyResultsInput" placeholder="Enter your key results"></textarea>
         <p id="keyResultsFeedback"></p>
+        <button onclick="showKeyResultsHelp()">Need help?</button> <!-- Help button for Key Results -->
+        <div id="keyResultsHelp" style="display:none;"> <!-- Help content for Key Results -->
+            <p><strong>Tip:</strong> Effective key results should be measurable and time-bound. For example, "Increase customer satisfaction from 70% to 90% by the end of Q4."</p>
+        </div>
     </div>
+    
     <button onclick="evaluateOKRs()">Submit</button>
     <script src="script.js"></script>
 </body>
