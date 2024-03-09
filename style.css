@@ -41,6 +41,10 @@ textarea {
     color: #0F253F; /* Updated font color */
 }
 
+textarea::placeholder {
+    color: #fff; /* Change placeholder text color to white */
+}
+
 button {
     background-color: #0078d4;
     color: white;

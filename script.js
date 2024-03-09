@@ -79,3 +79,21 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+
+// Array of scenarios
+var scenarios = [
+    "You are a product manager tasked with launching a new mobile app.",
+    "You are a marketing specialist aiming to increase brand awareness.",
+    "You are a project manager leading a team to deliver a major software upgrade.",
+    // Add more scenarios as needed
+];
+
+// Function to generate a random scenario
+function generateRandomScenario() {
+    var randomIndex = Math.floor(Math.random() * scenarios.length);
+    var scenario = scenarios[randomIndex];
+    document.getElementById('scenario').innerText = scenario;
+}
+
+// Call generateRandomScenario function on page load
+window.onload = generateRandomScenario;
