@@ -134,3 +134,20 @@ button:hover {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow effect for depth */
+}
+
+/* Change the color of the "Scenario" title */
+#scenarioSection h2 {
+    color: #0F253F; /* Change text color to #0F253F */
+}
+
+/* Give the scenario text its own background with more depth and realism */
+#scenarioSection {
+    background-color: #f4f4f4; /* Set background color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
