@@ -1,29 +1,36 @@
+/* Define the calming color scheme */
+:root {
+    --primary-color: #8D977E; /* Sage Green */
+    --secondary-color: #A9BFA6; /* Soft Green */
+    --accent-color: #5C7F7B; /* Calm Blue */
+    --background-color: #F5F5F5; /* Off White */
+    --text-color: #2E3532; /* Dark Slate */
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
 }
 
 h1 {
-    font-size: 24px;
-    text-align: center;
-    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
 }
 
-#objectiveSection, #keyResultsSection {
-    background-color: #0F253F; /* Updated background color */
+#scenarioSection, #objectiveSection, #keyResultsSection {
+    background-color: var(--secondary-color);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-h2 {
-    font-size: 20px;
-    color: #fff; /* Updated font color */
-    font-weight: bold; /* Added font weight */
+#scenarioSection h2, #objectiveSection h2, #keyResultsSection h2 {
+    color: var(--primary-color);
 }
 
 textarea {
@@ -37,26 +44,23 @@ textarea {
     box-sizing: border-box;
     font-size: 14px;
     resize: vertical;
-    background-color: #00C0E5; /* Updated background color */
-    color: #0F253F; /* Updated font color */
-}
-
-textarea::placeholder {
-    color: #fff; /* Change placeholder text color to white */
+    background-color: #E3E8E0; /* Lighter shade for input background */
+    color: var(--text-color);
 }
 
 button {
-    background-color: #0078d4;
+    background-color: var(--accent-color);
     color: white;
     padding: 10px 20px;
     margin: 10px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #0056a3;
+    background-color: darken(var(--accent-color), 10%);
 }
 
 .help-button {
@@ -64,8 +68,7 @@ button:hover {
     margin: 5px 0 20px 0;
     padding: 5px 10px;
     font-size: 14px;
-    color: white; /* Updated font color */
-    font-weight: bold; /* Added font weight */
+    color: white;
     background: none;
     border: none;
     cursor: pointer;
@@ -73,22 +76,11 @@ button:hover {
 }
 
 .help-button:hover {
-    background-color: transparent;
-    color: #ffffff;
-    text-decoration: none;
+    color: darken(white, 10%);
 }
 
 #objectiveFeedback, #keyResultsFeedback {
-    color: #d8000c;
-    margin: 10px 0;
-}
-
-#objectiveHelp, #keyResultsHelp {
-    background-color: #e7f3fe;
-    border-left: 5px solid #0078d4;
-    padding: 10px;
-    margin-top: 20px;
-    display: none;
+    color: var(--accent-color);
 }
 
 /* Modal Styles */
@@ -100,24 +92,24 @@ button:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1000;
 }
 
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: var(--secondary-color);
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     animation-name: animatetop;
     animation-duration: 0.4s;
 }
 
 .close-button {
-    color: #aaa;
+    color: var(--text-color);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -126,28 +118,10 @@ button:hover {
 .close-button:hover,
 .close-button:focus {
     color: black;
-    text-decoration: none;
     cursor: pointer;
 }
 
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
-}
-
-h1 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow effect for depth */
-}
-
-/* Change the color of the "Scenario" title */
-#scenarioSection h2 {
-    color: #0F253F; /* Change text color to #0F253F */
-}
-
-/* Give the scenario text its own background with more depth and realism */
-#scenarioSection {
-    background-color: #f4f4f4; /* Set background color */
-    padding: 20px; /* Add padding for spacing */
-    border-radius: 8px; /* Add border radius for rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
 }
