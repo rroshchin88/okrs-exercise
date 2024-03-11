@@ -36,13 +36,47 @@ function validateObjective(objective) {
         messages: []
     };
 
-    // Example validation: Objective should not include numbers
+    // Check: Objective should not include numbers
     if (/\d/.test(objective)) {
         feedback.isValid = false;
         feedback.messages.push("Objective should not include numbers.");
     }
 
-    // Additional validation logic can be added here
+    // Check: Objective should be inspirational and actionable
+    const actionVerbs = ['create', 'develop', 'establish', 'enhance', 'improve', 'increase', 'reinvent', 'transform', 'innovate'];
+    const verbFound = actionVerbs.some(verb => objective.toLowerCase().includes(verb));
+    if (!verbFound) {
+        feedback.isValid = false;
+        feedback.messages.push("Objective should include an action-oriented verb (e.g., create, develop, enhance).");
+    }
+
+    // Check: Objective Types (Build, Improve, Innovate)
+    const buildKeywords = ['create', 'build', 'establish'];
+    const improveKeywords = ['enhance', 'improve', 'increase'];
+    const innovateKeywords = ['reinvent', 'transform', 'innovate'];
+
+    const typeFound = buildKeywords.some(word => objective.toLowerCase().includes(word)) ||
+                      improveKeywords.some(word => objective.toLowerCase().includes(word)) ||
+                      innovateKeywords.some(word => objective.toLowerCase().includes(word));
+
+    if (!typeFound) {
+        feedback.isValid = false;
+        feedback.messages.push("Objective should clearly indicate if it aims to build, improve, or innovate.");
+    }
+
+    // Check: Levels of Impact (Directional, Meaningful, Audacious)
+    const directionalKeywords = ['guide', 'focus', 'direct'];
+    const meaningfulKeywords = ['meaningful', 'change', 'impact'];
+    const audaciousKeywords = ['energize', 'revolutionize', 'transform'];
+
+    const impactFound = directionalKeywords.some(word => objective.toLowerCase().includes(word)) ||
+                        meaningfulKeywords.some(word => objective.toLowerCase().includes(word)) ||
+                        audaciousKeywords.some(word => objective.toLowerCase().includes(word));
+
+    if (!impactFound) {
+        feedback.isValid = false;
+        feedback.messages.push("Objective should indicate its level of impact: directional, meaningful, or audacious.");
+    }
 
     return feedback;
 }
