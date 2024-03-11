@@ -1,10 +1,10 @@
 /* Define the calming color scheme */
 :root {
-    --primary-color: #8D977E; /* Sage Green */
-    --secondary-color: #A9BFA6; /* Soft Green */
-    --accent-color: #5C7F7B; /* Calm Blue */
-    --background-color: #F5F5F5; /* Off White */
-    --text-color: #2E3532; /* Dark Slate */
+    --primary-color: #222831; /* Dark Blue */
+    --secondary-color: #31363F; /* Light Sage Green */
+    --accent-color: #9DB2BF; /* Light Grey */
+    --background-color: #76ABAE; /* Light Blue */
+    --text-color: #EEEEEE; /* White */ 
 }
 
 body {
@@ -30,7 +30,7 @@ h1 {
 }
 
 #scenarioSection h2, #objectiveSection h2, #keyResultsSection h2 {
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 textarea {
@@ -49,8 +49,8 @@ textarea {
 }
 
 button {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--text-color);
+    color: 76ABAE;
     padding: 10px 20px;
     margin: 10px 0;
     border: none;
