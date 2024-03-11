@@ -8,14 +8,15 @@
 </head>
 <body>
     <h1>OKRs Exercise</h1>
-    <!-- Scenario Section -->
+
+    <!-- Scenario Section: Displays and allows generation of random scenarios -->
     <div id="scenarioSection">
         <h2>Scenario</h2>
         <p id="scenario"></p>
         <button onclick="generateRandomScenario()">Generate Random Scenario</button>
     </div>
 
-    <!-- Objective and Key Results Section -->
+    <!-- Objective Section: Input and feedback for objectives -->
     <div id="objectiveSection">
         <h2>Objective</h2>
         <textarea id="objectiveInput" placeholder="Enter your objective"></textarea>
@@ -26,6 +27,7 @@
         </div>
     </div>
     
+    <!-- Key Results Section: Input and feedback for key results -->
     <div id="keyResultsSection">
         <h2>Key Results</h2>
         <textarea id="keyResultsInput" placeholder="Enter your key results"></textarea>
@@ -37,7 +39,7 @@
     </div>
     <button onclick="evaluateOKRs()">Submit</button>
 
-    <!-- Modal Structure -->
+    <!-- Modal Structure: Provides feedback upon successful validation -->
     <div id="successModal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal()">&times;</span>
