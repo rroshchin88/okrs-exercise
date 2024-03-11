@@ -59,7 +59,7 @@ function evaluateOKRs() {
     
     // Example usage:
     let validationFeedback = validateObjective();
-    
+    console.log("Validation Feedback:", validationFeedback);
     if (validationFeedback.isValid) {
         console.log("Objective is valid.");
     } else {
