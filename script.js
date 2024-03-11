@@ -1,78 +1,93 @@
-// Function to evaluate OKRs based on user input
-function evaluateOKRs() {
+// Global variables to track the validation status of each section
+let objectiveIsValid = false;
+let keyResultsAreValid = false;
+
+// Validates the objective text and updates the feedback section
+function validateObjectiveText() {
     var objective = document.getElementById('objectiveInput').value.trim();
-    var objectiveFeedback = '';
-    var keyResultsFeedback = '';
-    var allValid = true;
+    var feedback = validateObjective(objective);
+    document.getElementById('objectiveFeedback').innerText = feedback.messages.join(" ");
+    objectiveIsValid = feedback.isValid; // Update the validation status
+    checkOverallValidation(); // Check if both sections are valid
+}
 
-    // Nested function to validate the objective
-    function validateObjective() {
-        let feedback = {
-            isValid: true,
-            messages: []
-        };
-    
-        // Validation checks for the objective
-        if (/\d/.test(objective)) {
-            feedback.isValid = false;
-            feedback.messages.push("The objective should not include numbers. Focus on the qualitative big idea.");
-        }
-    
-        // More validation checks...
-        // Action-oriented verbs and objective types validation
-        // Levels of impact validation
-    
-        return feedback;
-    }
-    
-    // Validate the objective and update feedback
-    let validationFeedback = validateObjective();
-    if (!validationFeedback.isValid) {
-        allValid = false;
-        objectiveFeedback = validationFeedback.messages.join(" ");
-    }
-    
-    // Validate key results (simplified example, expand based on your criteria)
-    // Key results validation logic...
+// Validates the key results text and updates the feedback section
+function validateKeyResults() {
+    var keyResults = document.getElementById('keyResultsInput').value.trim();
+    var feedback = validateKeyResultsText(keyResults);
+    document.getElementById('keyResultsFeedback').innerText = feedback.messages.join(" ");
+    keyResultsAreValid = feedback.isValid; // Update the validation status
+    checkOverallValidation(); // Check if both sections are valid
+}
 
-    // Update feedback display
-    document.getElementById('objectiveFeedback').innerText = objectiveFeedback;
-    document.getElementById('keyResultsFeedback').innerText = keyResultsFeedback;
-
-    // Show modal if all validations pass
-    if (allValid) {
+// Checks if both the objective and key results are valid and shows the modal if they are
+function checkOverallValidation() {
+    if (objectiveIsValid && keyResultsAreValid) {
         showModal();
     } else {
         closeModal();
     }
 }
 
-// Helper functions to show help text and modals
+// Contains the logic to validate the objective text
+function validateObjective(objective) {
+    let feedback = {
+        isValid: true,
+        messages: []
+    };
+
+    // Example validation: Objective should not include numbers
+    if (/\d/.test(objective)) {
+        feedback.isValid = false;
+        feedback.messages.push("Objective should not include numbers.");
+    }
+
+    // Additional validation logic can be added here
+
+    return feedback;
+}
+
+// Contains the logic to validate the key results text
+function validateKeyResultsText(keyResults) {
+    let feedback = {
+        isValid: true,
+        messages: []
+    };
+
+    // Example validation: Key results should include numbers
+    if (!/\d/.test(keyResults)) {
+        feedback.isValid = false;
+        feedback.messages.push("Key results should include numbers.");
+    }
+
+    // Additional validation logic can be added here
+
+    return feedback;
+}
+
+// Shows the help text for objectives
 function showObjectiveHelp() {
-    var helpDiv = document.getElementById('objectiveHelp');
-    helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
+    document.getElementById('objectiveHelp').style.display = 'block';
 }
 
+// Shows the help text for key results
 function showKeyResultsHelp() {
-    var helpDiv = document.getElementById('keyResultsHelp');
-    helpDiv.style.display = helpDiv.style.display === 'block' ? 'none' : 'block';
+    document.getElementById('keyResultsHelp').style.display = 'block';
 }
 
+// Displays the success modal
 function showModal() {
-    var modal = document.getElementById('successModal');
-    modal.style.display = 'block';
+    document.getElementById('successModal').style.display = 'block';
 }
 
+// Hides the success modal
 function closeModal() {
-    var modal = document.getElementById('successModal');
-    modal.style.display = 'none';
+    document.getElementById('successModal').style.display = 'none';
 }
 
-// Event listener for DOM content loaded to generate initial scenario
-document.addEventListener('DOMContentLoaded', generateRandomScenario);
-
-// Array of scenarios and function to generate a random scenario
-var scenarios = [
+// Generates a random scenario from the predefined list
+function generateRandomScenario() {
+    var scenarios = [
     "You are a product manager tasked with launching a new mobile app.",
     "You are a marketing specialist aiming to increase brand awareness.",
     "You are a project manager leading a team to deliver a major software upgrade.",
@@ -100,10 +115,10 @@ var scenarios = [
     "You are a product manager aiming to improve the onboarding experience of your product.",
     "You are a project manager aiming to improve the team's collaboration.",
     // Add more scenarios as needed
-];
-
-function generateRandomScenario() {
+    ];
     var randomIndex = Math.floor(Math.random() * scenarios.length);
-    var scenario = scenarios[randomIndex];
-    document.getElementById('scenario').innerText = scenario;
+    document.getElementById('scenario').innerText = scenarios[randomIndex];
 }
+
+// Adds an event listener to generate the initial scenario when the DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', generateRandomScenario);
