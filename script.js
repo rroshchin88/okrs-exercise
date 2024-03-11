@@ -15,7 +15,7 @@ function evaluateOKRs() {
         // 1. Declares the Big Idea Without Numbers
         if (/\d/.test(objective)) {
             feedback.isValid = false;
-            feedback.messages.push("Objective should not include numbers.");
+            feedback.messages.push("The objective should not include numbers. Focus on the qualitative big idea.");
         }
     
         // 2. Checks for action-oriented verbs and meaningful content
@@ -23,11 +23,10 @@ function evaluateOKRs() {
         const verbFound = actionVerbs.some(verb => objective.toLowerCase().includes(verb));
         if (!verbFound) {
             feedback.isValid = false;
-            feedback.messages.push("Objective should include action-oriented verbs like create, develop, enhance, etc.");
+            feedback.messages.push("Include an action-oriented verb (e.g., create, develop, enhance) to clarify the objective's intention.");
         }
     
         // 3. Objective Types (Build, Improve, Innovate)
-        // Assuming each type has unique keywords as provided
         const buildKeywords = ['create', 'develop', 'establish'];
         const improveKeywords = ['enhance', 'improve', 'increase'];
         const innovateKeywords = ['reinvent', 'transform', 'innovate'];
@@ -38,11 +37,10 @@ function evaluateOKRs() {
     
         if (!(buildFound || improveFound || innovateFound)) {
             feedback.isValid = false;
-            feedback.messages.push("Objective should clearly indicate if it aims to build, improve, or innovate.");
+            feedback.messages.push("Specify whether the objective aims to build, improve, or innovate.");
         }
     
         // 4. Levels of Impact (Directional, Meaningful, Audacious)
-        // Checking for the presence of impactful language
         const directionalKeywords = ['guide', 'focus', 'direct'];
         const meaningfulKeywords = ['meaningful', 'change', 'innovation'];
         const audaciousKeywords = ['energize', 'bold', 'next-level'];
@@ -53,7 +51,7 @@ function evaluateOKRs() {
     
         if (!(directionalFound || meaningfulFound || audaciousFound)) {
             feedback.isValid = false;
-            feedback.messages.push("Objective should indicate its level of impact: directional, meaningful, or audacious.");
+            feedback.messages.push("Indicate the level of impact: is the objective directional, meaningful, or audacious?");
         }
     
         return feedback;
@@ -66,8 +64,9 @@ function evaluateOKRs() {
     if (validationFeedback.isValid) {
         console.log("Objective is valid.");
     } else {
-        console.log("Objective validation failed:", validationFeedback.messages.join(" "));
+        console.log("Objective validation feedback:", validationFeedback.messages.join(" "));
     }
+    
     
 
     // Validate Key Results
@@ -167,5 +166,6 @@ function generateRandomScenario() {
     document.getElementById('scenario').innerText = scenario;
 }
 
-// Call generateRandomScenario function on page load
-window.onload = generateRandomScenario;
+// Instead of window.onload = generateRandomScenario;
+document.addEventListener('DOMContentLoaded', generateRandomScenario);
+

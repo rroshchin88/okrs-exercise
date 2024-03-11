@@ -45,7 +45,7 @@ textarea {
     font-size: 14px;
     resize: vertical;
     background-color: #E3E8E0; /* Lighter shade for input background */
-    color: var(--text-color);
+    color: 222831;
 }
 
 button {
