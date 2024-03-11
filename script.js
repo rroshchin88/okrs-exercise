@@ -6,20 +6,69 @@ function evaluateOKRs() {
     var allValid = true;
 
     // Validate Objective
-    if (objective.length < 10) {
-        objectiveFeedback = 'Objective should be more descriptive.';
-        allValid = false;
-    } else if (/\d/.test(objective)) {
-        objectiveFeedback = 'Objective should not include any numbers.';
-        allValid = false;
-    } else {
-        if (!objective.toLowerCase().includes('achieve') && !objective.toLowerCase().includes('inspire')) {
-            objectiveFeedback = 'Is your objective inspirational and actionable? Make sure it motivates and provides clear direction.';
-            allValid = false;
-        } else {
-            objectiveFeedback = 'Objective looks good!';
+    function validateObjective(objective) {
+        let feedback = {
+            isValid: true,
+            messages: []
+        };
+    
+        // 1. Declares the Big Idea Without Numbers
+        if (/\d/.test(objective)) {
+            feedback.isValid = false;
+            feedback.messages.push("Objective should not include numbers.");
         }
+    
+        // 2. Checks for action-oriented verbs and meaningful content
+        const actionVerbs = ['create', 'develop', 'establish', 'enhance', 'improve', 'increase', 'reinvent', 'transform', 'innovate'];
+        const verbFound = actionVerbs.some(verb => objective.toLowerCase().includes(verb));
+        if (!verbFound) {
+            feedback.isValid = false;
+            feedback.messages.push("Objective should include action-oriented verbs like create, develop, enhance, etc.");
+        }
+    
+        // 3. Objective Types (Build, Improve, Innovate)
+        // Assuming each type has unique keywords as provided
+        const buildKeywords = ['create', 'develop', 'establish'];
+        const improveKeywords = ['enhance', 'improve', 'increase'];
+        const innovateKeywords = ['reinvent', 'transform', 'innovate'];
+    
+        const buildFound = buildKeywords.some(word => objective.toLowerCase().includes(word));
+        const improveFound = improveKeywords.some(word => objective.toLowerCase().includes(word));
+        const innovateFound = innovateKeywords.some(word => objective.toLowerCase().includes(word));
+    
+        if (!(buildFound || improveFound || innovateFound)) {
+            feedback.isValid = false;
+            feedback.messages.push("Objective should clearly indicate if it aims to build, improve, or innovate.");
+        }
+    
+        // 4. Levels of Impact (Directional, Meaningful, Audacious)
+        // Checking for the presence of impactful language
+        const directionalKeywords = ['guide', 'focus', 'direct'];
+        const meaningfulKeywords = ['meaningful', 'change', 'innovation'];
+        const audaciousKeywords = ['energize', 'bold', 'next-level'];
+    
+        const directionalFound = directionalKeywords.some(word => objective.toLowerCase().includes(word));
+        const meaningfulFound = meaningfulKeywords.some(word => objective.toLowerCase().includes(word));
+        const audaciousFound = audaciousKeywords.some(word => objective.toLowerCase().includes(word));
+    
+        if (!(directionalFound || meaningfulFound || audaciousFound)) {
+            feedback.isValid = false;
+            feedback.messages.push("Objective should indicate its level of impact: directional, meaningful, or audacious.");
+        }
+    
+        return feedback;
     }
+    
+    // Example usage:
+    let objective = "Create a user-friendly onboarding experience.";
+    let validationFeedback = validateObjective(objective);
+    
+    if (validationFeedback.isValid) {
+        console.log("Objective is valid.");
+    } else {
+        console.log("Objective validation failed:", validationFeedback.messages.join(" "));
+    }
+    
 
     // Validate Key Results
     var validKRCount = 0;
