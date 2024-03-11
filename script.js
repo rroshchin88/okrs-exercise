@@ -161,6 +161,7 @@ var scenarios = [
 
 // Function to generate a random scenario
 function generateRandomScenario() {
+    console.log("generateRandomScenario is called");
     var randomIndex = Math.floor(Math.random() * scenarios.length);
     var scenario = scenarios[randomIndex];
     document.getElementById('scenario').innerText = scenario;
