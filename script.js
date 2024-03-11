@@ -6,7 +6,7 @@ function evaluateOKRs() {
     var allValid = true;
 
     // Validate Objective
-    function validateObjective(objective) {
+    function validateObjective() {
         let feedback = {
             isValid: true,
             messages: []
@@ -58,8 +58,7 @@ function evaluateOKRs() {
     }
     
     // Example usage:
-    let objective = "Create a user-friendly onboarding experience.";
-    let validationFeedback = validateObjective(objective);
+    let validationFeedback = validateObjective();
     
     if (validationFeedback.isValid) {
         console.log("Objective is valid.");
